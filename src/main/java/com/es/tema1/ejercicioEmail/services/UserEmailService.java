@@ -3,6 +3,7 @@ package com.es.tema1.ejercicioEmail.services;
 import com.es.tema1.ejercicioEmail.model.UserEmail;
 import com.es.tema1.ejercicioEmail.repository.UserEmailRepository;
 import com.es.tema1.ejercicioEmail.repository.UserEmailRepositoryAPI;
+import com.es.tema1.ejercicioEmail.utils.EncryptUtil;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,6 +37,18 @@ public class UserEmailService {
         this.repository = new UserEmailRepository();
     }
 
+    public boolean login(String email, String password) {
+        if (!validarEmail(email)) return false;
+
+        UserEmail u = repository.getUserEmail(email);
+
+        if (u == null) return false;
+
+        String passEncrypted = EncryptUtil.encryptPassword(password);
+
+        return email.equals(u.getEmail()) && passEncrypted.equals(u.getPassword());
+    }
+
     public UserEmail getUserEmail(String email) {
         if (email == null || email.isEmpty()) return null;
 
@@ -43,9 +56,9 @@ public class UserEmailService {
 
     }
 
-    public UserEmail insertUserEmail(String nombre, String email) {
+    public UserEmail insertUserEmail(String nombre, String email, String password) {
         if (validarNombre(nombre) && validarEmail(email)) {
-            return repository.insertUserEmail(new UserEmail(nombre, email));
+            return repository.insertUserEmail(new UserEmail(nombre, email, EncryptUtil.encryptPassword(password)));
         } else return null;
     }
 

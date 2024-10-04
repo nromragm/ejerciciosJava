@@ -12,6 +12,28 @@ public class UserEmailController {
         this.service = new UserEmailService();
     }
 
+    public RespuestaHTTP login(String email, String password) {
+        try {
+
+            if (email == null || email.isEmpty()) {
+                return new RespuestaHTTP(400,"Bad Request");
+            }
+            if (password == null || password.isEmpty()) {
+                return new RespuestaHTTP(400,"Bad Request");
+            }
+
+            boolean respuestaService = service.login(email, password);
+
+            if (respuestaService) {
+                return new RespuestaHTTP(200, "Todo ok");
+
+            } else return new RespuestaHTTP(403, "no autorizado");
+
+        } catch (Exception e) {
+            return new RespuestaHTTP(500, "Error");
+        }
+    }
+
     public RespuestaHTTP getUserEmail(String email) {
 
         try {
@@ -25,9 +47,9 @@ public class UserEmailController {
         }
     }
 
-    public RespuestaHTTP insertUserEmail(String nombre, String email) {
+    public RespuestaHTTP insertUserEmail(String nombre, String email, String password) {
         try {
-            UserEmail u = service.insertUserEmail(nombre, email);
+            UserEmail u = service.insertUserEmail(nombre, email, password);
             return u != null ?
                     new RespuestaHTTP(200, "TODO OK", u) :
                     new RespuestaHTTP(400, "Bad Request");

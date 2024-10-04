@@ -5,10 +5,17 @@ import java.util.Objects;
 public class UserEmail {
     private String nombre;
     private String email;
+    private String password;
 
     public UserEmail(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
+    }
+
+    public UserEmail(String nombre, String email, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
     }
 
     public String getNombre() {
@@ -17,6 +24,14 @@ public class UserEmail {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -44,10 +59,10 @@ public class UserEmail {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("UserEmail{");
-        sb.append("nombre='").append(nombre).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "UserEmail{" +
+                "nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

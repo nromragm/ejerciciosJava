@@ -37,7 +37,10 @@ public class AppEmail {
                     System.out.println("Inserta el email del usuario: ");
                     String uemail = Read.next();
 
-                    RespuestaHTTP r1 = controller.insertUserEmail(unombre, uemail);
+                    System.out.println("Inserta la contraseña del usuario: ");
+                    String upassword = Read.next();
+
+                    RespuestaHTTP r1 = controller.insertUserEmail(unombre, uemail, upassword);
 
                     if (r1.getCodigoRespuesta() == 200) {
                         System.out.println(r1.getUserEmail().toString());
