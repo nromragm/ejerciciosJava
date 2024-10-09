@@ -12,6 +12,8 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("org.hibernate:hibernate-core:6.6.0.Final")
+    implementation("com.mysql:mysql-connector-j:9.0.0")
 }
 
 tasks.test {
