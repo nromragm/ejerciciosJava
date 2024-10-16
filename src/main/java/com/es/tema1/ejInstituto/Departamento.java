@@ -17,6 +17,7 @@ public class Departamento {
     private int numProfesores;
 
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_instituto")
     private Instituto instituto;
 
     public Departamento(String nombre, int numProfesores, Instituto instituto) {

@@ -10,15 +10,11 @@
         <class>com.es.tema1.ejInstituto.Proveedor</class>
         <class>com.es.tema1.ejInstituto.Instituto</class>
         <class>com.es.tema1.ejInstituto.Inspector</class>
-        <class>com.es.tema1.ejemploHibernateClase.Director</class>
-        <class>com.es.tema1.ejemploHibernateClase.Direccion</class>
-        <class>com.es.tema1.ejemploHibernateClase.Pelicula</class>
-        <class>com.es.tema1.ejemploHibernateClase.Cine</class>
         <properties>
             <!-- Que bdd usar -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <!-- Donde esta la base de datos -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pruebabd"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/institutobdd"/>
             <!-- Credenciales -->
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>

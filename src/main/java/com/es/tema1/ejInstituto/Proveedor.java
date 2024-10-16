@@ -18,23 +18,23 @@ public class Proveedor {
     @Column
     private List<String> productos;
 
-    @ManyToMany(mappedBy = "proveedor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Instituto instituto;
+    @ManyToMany(mappedBy = "proveedores", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Instituto> institutos;
 
-    public Proveedor(String nombre, List<String> productos, Instituto instituto) {
+    public Proveedor(String nombre, List<String> productos, List<Instituto> institutos) {
         this.nombre = nombre;
         this.productos = productos;
-        this.instituto = instituto;
+        this.institutos = institutos;
     }
 
     public Proveedor() {}
 
-    public Instituto getInstituto() {
-        return instituto;
+    public List<Instituto> getInstitutos() {
+        return institutos;
     }
 
-    public void setInstituto(Instituto instituto) {
-        this.instituto = instituto;
+    public void setInstitutos(List<Instituto> institutos) {
+        this.institutos = institutos;
     }
 
     public int getId() {

@@ -22,8 +22,7 @@ public class Instituto {
     @JoinColumn(name = "id_inspector")
     private Inspector inspector;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "departamento")
-    @JoinColumn(name = "id_departamento")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "instituto")
     private List<Departamento> departamento;
 
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
