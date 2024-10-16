@@ -1,30 +1,55 @@
 package com.es.tema1.ejemploHibernateClase;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
-@Table
+@Table(name = "cine")
 public class Cine {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Column
-    private int nAsientos;
+    @Column(name = "capacidad", nullable = false)
+    private int capacidad;
 
-    public Cine() {}
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_direccion")
+    private Direccion direccion;
 
-    public String getId() {
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "dni_director")
+    private Director director;
+
+
+    public Cine() {
+
+    }
+
+    public Cine(String nombre, int capacidad, Direccion direccion, Director dir) {
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.direccion = direccion;
+        this.director = dir;
+    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,11 +61,19 @@ public class Cine {
         this.nombre = nombre;
     }
 
-    public int getnAsientos() {
-        return nAsientos;
+    public int getCapacidad() {
+        return capacidad;
     }
 
-    public void setnAsientos(int nAsientos) {
-        this.nAsientos = nAsientos;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
 }

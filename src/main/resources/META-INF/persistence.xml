@@ -5,10 +5,15 @@
     <persistence-unit name="UnidadMySQL" transaction-type="RESOURCE_LOCAL">
 
         <!-- Que clases usar -->
+        <class>com.es.tema1.ejInstituto.Director</class>
+        <class>com.es.tema1.ejInstituto.Departamento</class>
+        <class>com.es.tema1.ejInstituto.Proveedor</class>
+        <class>com.es.tema1.ejInstituto.Instituto</class>
+        <class>com.es.tema1.ejInstituto.Inspector</class>
+        <class>com.es.tema1.ejemploHibernateClase.Director</class>
+        <class>com.es.tema1.ejemploHibernateClase.Direccion</class>
         <class>com.es.tema1.ejemploHibernateClase.Pelicula</class>
         <class>com.es.tema1.ejemploHibernateClase.Cine</class>
-        <class>com.es.tema1.ejemploHibernateClase.Autor</class>
-
         <properties>
             <!-- Que bdd usar -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
